@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl,Validators, NgModel } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl, Validators, NgModel } from '@angular/forms';
 
 
 
@@ -10,71 +10,65 @@ import { FormBuilder, FormGroup, FormControl,Validators, NgModel } from '@angula
 })
 export class ContactformComponent implements OnInit {
 
-  public title:string  = 'first-angular-project';
-  public count:number = 0;
-  public contactForm:FormGroup;
+  public title: string = 'first-angular-project';
+  public count: number = 0;
+  public contactForm: FormGroup;
   public submitted: boolean = false;
-  public arr=[];
-  
-  
-  public myclass2:string="myclass2";
-  
-  public haserorr:boolean=false;
-  public isSpecial:boolean = true;
+  public arr = [];
+
+
+  public myclass2: string = "myclass2";
+
+  public haserorr: boolean = false;
+  public isSpecial: boolean = true;
 
   public testid;
-  public invalid:boolean=false;
+  public invalid: boolean = false;
 
-  public MessageClasses=
-  {
-   "text-success":this.haserorr,
-   "text-danger":!this.haserorr,
-   "text-special":this.isSpecial
-   
+  public MessageClasses;
 
-  }
-  
-  
-   
-  constructor(private formBuilder: FormBuilder) 
-  {
 
-    this.title="project1";
-  
+
+  constructor(private formBuilder: FormBuilder) {
+
+    this.title = "project1";
+
 
   }
 
   ngOnInit() {
-  this.title="project2";
- 
+    this.title = "project2";
+
     this.contactForm = this.formBuilder.group({
       Fname: ['', Validators.required],
       Lname: ['', Validators.required],
-      Password:['',Validators.required],
-      Email:['',[Validators.required,Validators.email]],
-      Zipcode:['',[Validators.required,Validators.minLength(5)]]
- 
+      Password: ['', Validators.required],
+      Email: ['', [Validators.required, Validators.email]],
+      Zipcode: ['', [Validators.required, Validators.minLength(5)]]
+
     });
-    
-  
 
-    this.testid="myid";
-    
+
+    this.testid = "myid";
+
   }
-  
 
- 
- 
-  onsubmit()
-  {
-    
-    
 
-    if(this.contactForm.invalid)
-    {
+
+
+  onsubmit() {
+
+
+
+    if (this.contactForm.invalid) {
       console.log("Invalid form");
-      this.invalid =true;
-      this.haserorr=true;
+      this.invalid = true;
+      this.haserorr = true;
+      this.MessageClasses =
+      {
+        "text-success": !this.haserorr,
+        "text-danger": this.haserorr
+      }
       return false;
 
 
@@ -82,30 +76,37 @@ export class ContactformComponent implements OnInit {
 
 
 
-    this.invalid=false;
-    this.haserorr=true;
+    // this.invalid = false;
+    this.haserorr = false;
+
+    this.MessageClasses =
+    {
+      "text-success": !this.haserorr,
+      "text-danger": this.haserorr
+    }
+
     console.log("Valid form");
     this.submitted = true;
-    
+
     var data = {
       fname: this.contactForm.value.Fname,
       lname: this.contactForm.value.Lname,
       email: this.contactForm.value.Email,
       password: this.contactForm.value.Password,
-      zipcode:this.contactForm.value.Zipcode
+      zipcode: this.contactForm.value.Zipcode
     }
 
-     console.log(data);
-     this.arr.push(data);
-     console.log(this.arr);
-           
-    
+    console.log(data);
+    this.arr.push(data);
+    console.log(this.arr);
+
+
   }
 
-  
-    
-    
-  }
+
+
+
+}
 
 
 
