@@ -1,0 +1,102 @@
+<form [formGroup]="contactForm" class="form-horizontal" (ngSubmit)="onsubmit()">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Contact Form</h3>
+        </div>
+        <div class="panel-body">
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="fname">Full Name</label>
+                <div class="col-sm-8">
+                    <input  formControlName="Fname" type="text" class="form-control"  placeholder="Enter First Name">
+                    <div *ngIf="submitted && contactForm.get('Fname').invalid" class="alert alert-danger">
+                        <span *ngIf="contactForm.get('Fname').errors.required">
+                            First name is required 
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" for="lname">Last Name</label>
+                <div class="col-sm-8">
+                  <input formControlName="Lname" type="text" class="form-control" placeholder="Enter Last Name">
+                  <div *ngIf="submitted && contactForm.get('Lname').invalid" class="alert alert-danger">
+                  <span *ngIf="contactForm.get('Lname').errors.required">
+                      last name is required
+                  </span>
+                  </div>
+               
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label" >email</label>
+                <div class="col-sm-8">
+                  <input  formControlName="Email" type="text" class="form-control" >
+                 </div>
+              </div>
+        
+              <div class="form-group">
+                <label class="col-sm-2 control-label" >Password</label>
+                <div class="col-sm-8">
+                  <input formControlName="Password" type="text" class="form-control">
+                 </div>
+              </div>
+
+             <div class="form-group">
+                 <label class="col-sm-2 control-label" >Zipcode</label>
+                <div class="col-sm-8">
+                  <input   formControlName="Zipcode" type="text"  minlength="5" class="form-control"  >
+                
+                  <div *ngIf="contactForm.get('Zipcode').errors">
+                     <span *ngIf="contactForm.get('Zipcode').errors.minlength" class="alert alert-danger">
+                        zipcode must be 5 digits
+                     </span> 
+                   </div>
+                 </div>
+              </div>
+         
+             
+
+            <div class="panel-footer">                       
+                                                              <!--2 way property binding  [disabled]='contactForm.invalid'-->
+                <button class="btn btn-primary"  type="submit" >Submit</button>
+              </div>
+        </div>
+    </div>
+</form>
+
+
+
+<div class="form-group">
+    
+    <div class="col-sm-8">
+      <input  type="text" [id]='testid' class="form-control">
+     </div>
+
+  </div>
+               <!-- variable -->
+  <!-- <h3 [class] = "myclass2">Contact Forms _2 </h3> -->
+
+
+ <h3 [ngClass] = "MessageClasses">Contact Forms _2 </h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

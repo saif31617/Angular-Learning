@@ -1,0 +1,47 @@
+h1{
+    color:darkslategrey; 
+    font-size: 26px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  }
+  .myclass
+  {
+      color:darkslategrey; 
+      font-size: 15px;
+      font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      padding-top: 100px;
+      padding-left: 500px;
+      padding-right: 500px;
+      padding-bottom: 500px;
+  }
+  #btnsubmit
+  {
+  
+      color:darkslategrey; 
+      font-size: 13px;
+      font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      
+  
+  }
+  .myclass2
+  {
+      color:chartreuse; 
+      font-size: 15px;
+      font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+      
+  }
+
+.text-danger
+{
+color:red;
+}
+.text-success
+{
+color:springgreen
+}
+
+.text-special
+{
+    font-style:italic;
+}
+
+
