@@ -59,13 +59,17 @@
              
 
             <div class="panel-footer">                       
-                                                              <!--2 way property binding  [disabled]='contactForm.invalid'-->
-                <button class="btn btn-primary"  type="submit" >Submit</button>
+                                                              
+              
+              
+               <!-- checking the form is valid or not 2 way property binding  [disabled]='contactForm.invalid'-->
+                <button class="btn btn-primary"  (click)="updateColor($event)" type="submit" >Submit</button>
+                <!-- interpolation -->
+                {{OnsubmitMessage}}
               </div>
         </div>
     </div>
 </form>
-
 
 
 <div class="form-group">
@@ -79,11 +83,25 @@
   <!-- <h3 [class] = "myclass2">Contact Forms _2 </h3> -->
 
 
- <h3 [ngClass] = "MessageClasses">Contact Forms _2 </h3>
+  <h3 [ngClass] = "MessageClasses">Contact Forms _2 </h3>
 
 
 
 
+ <!-- set color by using Direct String -->
+ <h1 [style.color]="'orange'">style Binding</h1>
+
+
+
+
+<!-- Conditional  Expression -->
+ <h1 [style.color]="haserorr ? 'red' : 'green' ">Conditional  Expression</h1>
+
+
+<!-- change of color by using update color method on submit click -->
+<h1 [style.color]="color">Direct Call the </h1>
+
+<!-- <h1 [ngStyle]="titleStyles">New NG Style</h1> -->
 
 
 

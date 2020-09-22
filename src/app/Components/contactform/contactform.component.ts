@@ -14,18 +14,42 @@ export class ContactformComponent implements OnInit {
   public count: number = 0;
   public contactForm: FormGroup;
   public submitted: boolean = false;
+  public OnsubmitMessage="";
+
   public arr = [];
 
 
   public myclass2: string = "myclass2";
 
+
+
   public haserorr: boolean = false;
   public isSpecial: boolean = true;
+
+  public color="blue";
 
   public testid;
   public invalid: boolean = false;
 
   public MessageClasses;
+
+
+
+  updateColor(event)
+  {
+
+     console.log(event);
+     this.color="red";
+     this.OnsubmitMessage="Sucessfull Submission";
+
+  }
+
+  // pulbic titleStyles = { 
+
+  //   color: "grey",
+  //   fontStyle: "itallic"
+  // }
+ 
 
 
 
@@ -60,7 +84,8 @@ export class ContactformComponent implements OnInit {
 
 
 
-    if (this.contactForm.invalid) {
+    if (this.contactForm.invalid)
+     {
       console.log("Invalid form");
       this.invalid = true;
       this.haserorr = true;
@@ -82,7 +107,8 @@ export class ContactformComponent implements OnInit {
     this.MessageClasses =
     {
       "text-success": !this.haserorr,
-      "text-danger": this.haserorr
+      "text-danger": this.haserorr,
+      "text-special":this.isSpecial
     }
 
     console.log("Valid form");
