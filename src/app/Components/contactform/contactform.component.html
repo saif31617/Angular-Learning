@@ -50,7 +50,11 @@
 
         <!-- bind the array from select list -->
         <select>
-          <option *ngFor="let pro of profession" [value]="pro.id" aria-placeholder="profession">
+          <option  value="" hidden>
+            please slect profession 
+          </option>
+          <option *ngFor="let pro of profession" [value]="pro.id" >
+
             {{pro.Name}}
           </option>
         </select>

@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, NgModel } from '@angular/forms';
+import { ContactformService } from '../../Services/contactform.service';
+
        //class name           //profession.ts 
 import { Professions } from './profession';
+import { from } from 'rxjs';
 
 
 @Component({
@@ -57,14 +60,17 @@ export class ContactformComponent implements OnInit {
 
 
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder : FormBuilder, private contactService : ContactformService) 
+  {
+
 
     this.title = "project1";
 
 
   }
 
-  ngOnInit() {
+  ngOnInit() 
+  {
     this.title = "project2";
 
     this.contactForm = this.formBuilder.group
@@ -76,18 +82,11 @@ export class ContactformComponent implements OnInit {
       Zipcode: ['', [Validators.required, Validators.minLength(5)]]
 
     });
-
-
     this.testid = "myid";
-
-
-    this.profession=
-    [
-      {id:1,Name:"Govt officer"},
-      {id:2,Name:"Banker"},
-      {id:3,Name:"Business man"},
-      {id:4,Name:"Contractor"}
-    ];
+    
+    this.profession = this.contactService.GetUserDetails();
+    
+    // this.profession= [];
   }
 
 
