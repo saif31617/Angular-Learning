@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, NgModel } from '@angular/forms';
-
+       //class name           //profession.ts 
+import { Professions } from './profession';
 
 
 @Component({
@@ -14,14 +15,14 @@ export class ContactformComponent implements OnInit {
   public count: number = 0;
   public contactForm: FormGroup;
   public submitted: boolean = false;
+  public isDisplayform:boolean=false;
   public OnsubmitMessage = "";
+  public OnclickMessage="";
 
   public arr = [];
 
 
   public myclass2: string = "myclass2";
-
-
 
   public haserorr: boolean = false;
   public isSpecial: boolean = true;
@@ -32,6 +33,10 @@ export class ContactformComponent implements OnInit {
   public invalid: boolean = false;
 
   public MessageClasses;
+
+ //array of profession type class
+  profession:Professions[];
+  
 
   public titleStyles = {
 
@@ -62,7 +67,8 @@ export class ContactformComponent implements OnInit {
   ngOnInit() {
     this.title = "project2";
 
-    this.contactForm = this.formBuilder.group({
+    this.contactForm = this.formBuilder.group
+    ({
       Fname: ['', Validators.required],
       Lname: ['', Validators.required],
       Password: ['', Validators.required],
@@ -74,6 +80,14 @@ export class ContactformComponent implements OnInit {
 
     this.testid = "myid";
 
+
+    this.profession=
+    [
+      {id:1,Name:"Govt officer"},
+      {id:2,Name:"Banker"},
+      {id:3,Name:"Business man"},
+      {id:4,Name:"Contractor"}
+    ];
   }
 
 
@@ -130,6 +144,24 @@ export class ContactformComponent implements OnInit {
   public OnClickMe()
   {
     console.log('Click Me');
+    this.OnclickMessage="Welcome To angular";
+    
+    // this.isDisplayform = !this.isDisplayform;
+
+    console.log(this.isDisplayform);
+
+    if(this.isDisplayform == true)
+    {
+      this.isDisplayform = false;
+      console.log(this.isDisplayform);
+    }
+    else
+    {
+      this.isDisplayform = true;
+      console.log(this.isDisplayform);
+    }
+    
+
   }
 
 
