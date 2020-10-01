@@ -1,5 +1,78 @@
 <form *ngIf="isDisplayform" [formGroup]="contactForm" class="form-horizontal" (ngSubmit)="onsubmit()">
 
+
+
+<table class="table table-bordered">
+
+<tr class="bg-primary">
+<th>id</th>
+<th>name</th>
+<th>username</th>
+<th>email</th>
+<th>phone</th>
+<th>company</th>
+<th> address</th> 
+<th>website</th>
+
+
+</tr>
+
+<tr *ngFor="let con of arr_contact" [value]="con.id" >
+
+ <td>{{con.id}}</td>
+ <td>{{con.name}}</td>
+ <td>{{con.username}}</td>
+ <td>{{con.email}}</td>
+ <td>{{con.phone}}</td>
+ <td>{{con.website}}</td>
+ <td>{{con.company}}</td>
+ <td>{{con.addres}}</td>
+
+
+
+</tr>
+
+</table>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <div class="panel panel-primary">
     <div class="panel-heading">
       <h3 class="panel-title">Contact Form</h3>

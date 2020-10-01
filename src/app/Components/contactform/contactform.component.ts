@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators, NgModel } from '@angular/forms';
 import { ContactformService } from '../../Services/contactform.service';
+import { contactUser } from '../../Components/contactform/contactformInterface';
+
+
 
        //class name           //profession.ts 
 import { Professions } from './profession';
 import { from } from 'rxjs';
+import { getLocaleDateFormat } from '@angular/common';
 
 
 @Component({
@@ -13,6 +17,10 @@ import { from } from 'rxjs';
   styleUrls: ['./contactform.component.css']
 })
 export class ContactformComponent implements OnInit {
+
+
+
+  public arr_contact =[];
 
   public title: string = 'first-angular-project';
   public count: number = 0;
@@ -72,6 +80,16 @@ export class ContactformComponent implements OnInit {
   ngOnInit() 
   {
     this.title = "project2";
+
+         
+    this.contactService.getData()
+    .subscribe(data =>
+      {
+         console.log(data);
+      this.arr_contact = data});
+
+      
+    
 
     this.contactForm = this.formBuilder.group
     ({
@@ -160,6 +178,12 @@ export class ContactformComponent implements OnInit {
       console.log(this.isDisplayform);
     }
     
+        
+    // this.contactService.getData().subscribe(data => {
+    //   console.log(data);
+    //  });
+    
+
 
   }
 

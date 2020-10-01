@@ -6,6 +6,7 @@ import { RouterModule, Router, Routes } from '@angular/router';
 import { ContactformComponent } from './Components/contactform/contactform.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContactformService } from './Services/contactform.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 
 
@@ -28,17 +29,20 @@ const appRouts: Routes = [
   declarations: [
     AppComponent,
     ContactformComponent,
+    
 
 
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    HttpClientModule,
     RouterModule.forRoot(
       appRouts
 
     ),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+
   ],
   providers: [ContactformService],
   bootstrap: [AppComponent]
