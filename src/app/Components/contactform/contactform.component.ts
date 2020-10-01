@@ -5,7 +5,7 @@ import { contactUser } from '../../Components/contactform/contactformInterface';
 
 
 
-       //class name           //profession.ts 
+//class name           //profession.ts 
 import { Professions } from './profession';
 import { from } from 'rxjs';
 import { getLocaleDateFormat } from '@angular/common';
@@ -18,17 +18,17 @@ import { getLocaleDateFormat } from '@angular/common';
 })
 export class ContactformComponent implements OnInit {
 
+  public add_data_post = {};
 
-
-  public arr_contact =[];
+  public arr_contact = [];
 
   public title: string = 'first-angular-project';
   public count: number = 0;
   public contactForm: FormGroup;
   public submitted: boolean = false;
-  public isDisplayform:boolean=false;
+  public isDisplayform: boolean = false;
   public OnsubmitMessage = "";
-  public OnclickMessage="";
+  public OnclickMessage = "";
 
   public arr = [];
 
@@ -45,9 +45,9 @@ export class ContactformComponent implements OnInit {
 
   public MessageClasses;
 
- //array of profession type class
-  profession:Professions[];
-  
+  //array of profession type class
+  profession: Professions[];
+
 
   public titleStyles = {
 
@@ -68,8 +68,7 @@ export class ContactformComponent implements OnInit {
 
 
 
-  constructor(private formBuilder : FormBuilder, private contactService : ContactformService) 
-  {
+  constructor(private formBuilder: FormBuilder, private contactService: ContactformService) {
 
 
     this.title = "project1";
@@ -77,33 +76,32 @@ export class ContactformComponent implements OnInit {
 
   }
 
-  ngOnInit() 
-  {
+  ngOnInit() {
     this.title = "project2";
 
-         
-    this.contactService.getData()
-    .subscribe(data =>
-      {
-         console.log(data);
-      this.arr_contact = data});
 
-      
-    
+    this.contactService.getData()
+      .subscribe(data => {
+        console.log(data);
+        this.arr_contact = data
+      });
+
+
+
 
     this.contactForm = this.formBuilder.group
-    ({
-      Fname: ['', Validators.required],
-      Lname: ['', Validators.required],
-      Password: ['', Validators.required],
-      Email: ['', [Validators.required, Validators.email]],
-      Zipcode: ['', [Validators.required, Validators.minLength(5)]]
+      ({
+        Fname: ['', Validators.required],
+        Lname: ['', Validators.required],
+        Password: ['', Validators.required],
+        Email: ['', [Validators.required, Validators.email]],
+        Zipcode: ['', [Validators.required, Validators.minLength(5)]]
 
-    });
+      });
     this.testid = "myid";
-    
+
     this.profession = this.contactService.GetUserDetails();
-    
+
     // this.profession= [];
   }
 
@@ -158,31 +156,40 @@ export class ContactformComponent implements OnInit {
 
   }
 
-  public OnClickMe()
-  {
+  public OnClickMe() {
     console.log('Click Me');
-    this.OnclickMessage="Welcome To angular";
-    
+    this.OnclickMessage = "Welcome To angular";
+
     // this.isDisplayform = !this.isDisplayform;
 
     console.log(this.isDisplayform);
 
-    if(this.isDisplayform == true)
-    {
+    if (this.isDisplayform == true) {
       this.isDisplayform = false;
       console.log(this.isDisplayform);
     }
-    else
-    {
+    else {
       this.isDisplayform = true;
       console.log(this.isDisplayform);
     }
-    
-        
-    // this.contactService.getData().subscribe(data => {
+
+
+
+    this.add_data_post = {
+      userId: 11,
+      title: "Test",
+      body: "Hello World"
+    }
+
+    // console.log(this.add_data_post);
+    this.contactService.adddata(this.add_data_post).toPromise().then((data: any) => {
+      console.log(data);
+    });
+
+    // this.contactService.adddata().subscribe(data => {
     //   console.log(data);
     //  });
-    
+
 
 
   }

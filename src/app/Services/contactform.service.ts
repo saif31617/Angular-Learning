@@ -9,14 +9,22 @@ import { contactUser } from '../Components/contactform/contactformInterface';
 export class ContactformService {
 
   constructor(private httpClient : HttpClient ) { }
-  public url="https://jsonplaceholder.typicode.com/users";
+  public url="https://jsonplaceholder.typicode.com";
+
+
    
  public  getData( ) : Observable <contactUser[]>
  {
 
-  return this.httpClient.get<contactUser[]>(this.url);
+  return this.httpClient.get<contactUser[]>(this.url+"/users");
    
  }
+
+
+public  adddata( postdata:any ) : Observable<any>
+{
+return this.httpClient.post(this.url,postdata);
+}
 
   public GetUserDetails()
   {
