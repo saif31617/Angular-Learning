@@ -18,6 +18,7 @@ import { getLocaleDateFormat } from '@angular/common';
 })
 export class ContactformComponent implements OnInit {
 
+  //Create object 
   public add_data_post = {};
 
   public arr_contact = [];
@@ -76,7 +77,8 @@ export class ContactformComponent implements OnInit {
 
   }
 
-  ngOnInit() {
+  ngOnInit() 
+  {
     this.title = "project2";
 
 
@@ -98,6 +100,11 @@ export class ContactformComponent implements OnInit {
         Zipcode: ['', [Validators.required, Validators.minLength(5)]]
 
       });
+
+
+
+
+      
     this.testid = "myid";
 
     this.profession = this.contactService.GetUserDetails();
@@ -112,7 +119,8 @@ export class ContactformComponent implements OnInit {
 
 
 
-    if (this.contactForm.invalid) {
+    if (this.contactForm.invalid)
+    {
       console.log("Invalid form");
       this.invalid = true;
       this.haserorr = true;
@@ -181,14 +189,15 @@ export class ContactformComponent implements OnInit {
       body: "Hello World"
     }
 
-    // console.log(this.add_data_post);
-    this.contactService.adddata(this.add_data_post).toPromise().then((data: any) => {
+
+
+    // this.contactService.adddata(this.add_data_post).toPromise().then((data: any) => {
+    //   console.log(data);
+    // });
+
+    this.contactService.adddata(this.add_data_post).subscribe(data => {
       console.log(data);
     });
-
-    // this.contactService.adddata().subscribe(data => {
-    //   console.log(data);
-    //  });
 
 
 

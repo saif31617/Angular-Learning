@@ -2,201 +2,202 @@
 
 
 
-<table class="table table-bordered">
-
-<tr class="bg-primary">
-<th>id</th>
-<th>name</th>
-<th>username</th>
-<th>email</th>
-<th>phone</th>
-<th>company</th>
-<th> address</th> 
-<th>website</th>
-
-
-</tr>
-
-<tr *ngFor="let con of arr_contact" [value]="con.id" >
-
- <td>{{con.id}}</td>
- <td>{{con.name}}</td>
- <td>{{con.username}}</td>
- <td>{{con.email}}</td>
- <td>{{con.phone}}</td>
- <td>{{con.website}}</td>
- <td>{{con.company}}</td>
- <td>{{con.addres}}</td>
-
-
-
-</tr>
-
-</table>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h3 class="panel-title">Contact Form</h3>
+  <table class="table table-bordered">
+  
+  <tr class="bg-primary">
+  <th>id</th>
+  <th>name</th>
+  <th>username</th>
+  <th>email</th>
+  <th>phone</th>
+  <th>company</th>
+  <th> address</th> 
+  <th>website</th>
+  
+  
+  </tr>
+  
+  <tr *ngFor="let con of arr_contact" [value]="con.id" >
+  
+   <td>{{con.id}}</td>
+   <td>{{con.name}}</td>
+   <td>{{con.username}}</td>
+   <td>{{con.email}}</td>
+   <td>{{con.phone}}</td>
+   <td>{{con.website}}</td>
+   <td>{{con.company}}</td>
+   <td>{{con.addres}}</td>
+  
+  
+  
+  </tr>
+  
+  </table>
+  
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title">Contact Form</h3>
+      </div>
+      <div class="panel-body">
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="fname">Full Name</label>
+          <div class="col-sm-8">
+            <input formControlName="Fname" type="text" class="form-control" placeholder="Enter First Name">
+            <div *ngIf="submitted && contactForm.get('Fname').invalid" class="alert alert-danger">
+              <span *ngIf="contactForm.get('Fname').errors.required">
+                First name is required
+              </span>
+            </div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label class="col-sm-2 control-label" for="lname">Last Name</label>
+          <div class="col-sm-8">
+            <input formControlName="Lname" type="text" class="form-control" placeholder="Enter Last Name">
+            <div *ngIf="submitted && contactForm.get('Lname').invalid" class="alert alert-danger">
+              <span *ngIf="contactForm.get('Lname').errors.required">
+                last name is required
+              </span>
+            </div>
+  
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label class="col-sm-2 control-label">email</label>
+          <div class="col-sm-8">
+            <input formControlName="Email" type="text" class="form-control">
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Password</label>
+          <div class="col-sm-8">
+            <input formControlName="Password" type="text" class="form-control">
+          </div>
+        </div>
+  
+  
+  
+        <div class="drop-down">
+  
+          <!-- bind the array from select list -->
+          <select>
+            <option  value="" hidden>
+              please slect profession 
+            </option>
+            <option *ngFor="let pro of profession" [value]="pro.id" >
+  
+              {{pro.Name}}
+            </option>
+          </select>
+        </div>
+  
+        <br>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Zipcode</label>
+          <div class="col-sm-8">
+            <input formControlName="Zipcode" type="text" minlength="5" class="form-control">
+  
+            <div *ngIf="contactForm.get('Zipcode').errors">
+              <span *ngIf="contactForm.get('Zipcode').errors.minlength" class="alert alert-danger">
+                zipcode must be 5 digits
+              </span>
+            </div>
+          </div>
+        </div>
+  
+  
+  
+        <div class="panel-footer">
+  
+  
+  
+          <!-- checking the form is valid or not 2 way property binding  [disabled]='contactForm.invalid'-->
+          <button class="btn btn-primary" (click)="updateColor($event)" type="submit">Submit</button>
+          <!-- interpolation -->
+          {{OnsubmitMessage}}
+        </div>
+      </div>
     </div>
-    <div class="panel-body">
-      <div class="form-group">
-        <label class="col-sm-2 control-label" for="fname">Full Name</label>
-        <div class="col-sm-8">
-          <input formControlName="Fname" type="text" class="form-control" placeholder="Enter First Name">
-          <div *ngIf="submitted && contactForm.get('Fname').invalid" class="alert alert-danger">
-            <span *ngIf="contactForm.get('Fname').errors.required">
-              First name is required
-            </span>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="col-sm-2 control-label" for="lname">Last Name</label>
-        <div class="col-sm-8">
-          <input formControlName="Lname" type="text" class="form-control" placeholder="Enter Last Name">
-          <div *ngIf="submitted && contactForm.get('Lname').invalid" class="alert alert-danger">
-            <span *ngIf="contactForm.get('Lname').errors.required">
-              last name is required
-            </span>
-          </div>
-
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="col-sm-2 control-label">email</label>
-        <div class="col-sm-8">
-          <input formControlName="Email" type="text" class="form-control">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label class="col-sm-2 control-label">Password</label>
-        <div class="col-sm-8">
-          <input formControlName="Password" type="text" class="form-control">
-        </div>
-      </div>
-
-
-
-      <div class="drop-down">
-
-        <!-- bind the array from select list -->
-        <select>
-          <option  value="" hidden>
-            please slect profession 
-          </option>
-          <option *ngFor="let pro of profession" [value]="pro.id" >
-
-            {{pro.Name}}
-          </option>
-        </select>
-      </div>
-
-      <br>
-      <div class="form-group">
-        <label class="col-sm-2 control-label">Zipcode</label>
-        <div class="col-sm-8">
-          <input formControlName="Zipcode" type="text" minlength="5" class="form-control">
-
-          <div *ngIf="contactForm.get('Zipcode').errors">
-            <span *ngIf="contactForm.get('Zipcode').errors.minlength" class="alert alert-danger">
-              zipcode must be 5 digits
-            </span>
-          </div>
-        </div>
-      </div>
-
-
-
-      <div class="panel-footer">
-
-
-
-        <!-- checking the form is valid or not 2 way property binding  [disabled]='contactForm.invalid'-->
-        <button class="btn btn-primary" (click)="updateColor($event)" type="submit">Submit</button>
-        <!-- interpolation -->
-        {{OnsubmitMessage}}
+  </form>
+  
+  
+  
+  <div *ngIf="!isDisplayform" class="test-div">
+  
+    <div class="form-group">
+  
+      <div class="col-sm-8">
+        <input type="text" [id]='testid' class="form-control">
       </div>
     </div>
+    <!-- variable -->
+    <!-- <h3 [class] = "myclass2">Contact Forms _2 </h3> -->
+    <h3 [ngClass]="MessageClasses">Contact Forms _2 </h3>
+  
+  
+  
+  
+    <!-- set color by using Direct String -->
+    <h1 [style.color]="'orange'">style Binding</h1>
+  
+  
+  
+  
+    <!-- Conditional  Expression -->
+    <h1 [style.color]="haserorr ? 'red' : 'green' ">Conditional Expression</h1>
+  
+  
+    <!-- change of color by using update color method on submit click -->
+    <h1 [style.color]="color">Direct Call the </h1>
+  
+    <h1 [ngStyle]="titleStyles">New NG Style</h1>
+  
+  
+  
   </div>
-</form>
-
-
-
-<div *ngIf="!isDisplayform" class="test-div">
-
-  <div class="form-group">
-
-    <div class="col-sm-8">
-      <input type="text" [id]='testid' class="form-control">
-    </div>
-  </div>
-  <!-- variable -->
-  <!-- <h3 [class] = "myclass2">Contact Forms _2 </h3> -->
-  <h3 [ngClass]="MessageClasses">Contact Forms _2 </h3>
-
-
-
-
-  <!-- set color by using Direct String -->
-  <h1 [style.color]="'orange'">style Binding</h1>
-
-
-
-
-  <!-- Conditional  Expression -->
-  <h1 [style.color]="haserorr ? 'red' : 'green' ">Conditional Expression</h1>
-
-
-  <!-- change of color by using update color method on submit click -->
-  <h1 [style.color]="color">Direct Call the </h1>
-
-  <h1 [ngStyle]="titleStyles">New NG Style</h1>
-
-
-
-</div>
-
-<button (click)="OnClickMe()">Click Me</button>
-{{OnclickMessage}}
+  
+  <button (click)="OnClickMe()">Click Me</button>
+  {{OnclickMessage}}
+  

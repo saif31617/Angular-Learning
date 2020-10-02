@@ -23,7 +23,7 @@ export class ContactformService {
 
 public  adddata( postdata:any ) : Observable<any>
 {
-return this.httpClient.post(this.url,postdata);
+return this.httpClient.post(this.url+"/posts",postdata);
 }
 
   public GetUserDetails()
